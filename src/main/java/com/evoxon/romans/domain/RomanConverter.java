@@ -70,52 +70,64 @@ public class RomanConverter {
         int decimal = 0;
 
         for (int i = 0; i < charArray.length; i++) {
-            if (charArray[i] == 'M') {
-                decimal += 1000;
-            }
-            if (charArray[i] == 'D') {
-                decimal += 500;
-            }
-            if (charArray[i] == 'C') {
-                if (charArray[i + 1] == 'M') {
-                    decimal += 900;
-                    i++;
+            switch (charArray[i]) {
+                case 'M': {
+                    decimal += 1000;
+                    break;
                 }
-                if (charArray[i + 1] == 'D') {
-                    decimal += 400;
-                    i++;
-                } else {
+                case 'D': {
+                    decimal += 500;
+                    break;
+                }
+                case 'C': {
+                    if (charArray[i + 1] == 'M') {
+                        decimal += 900;
+                        i++;
+                        break;
+                    }
+                    if (charArray[i + 1] == 'D') {
+                        decimal += 400;
+                        i++;
+                        break;
+                    }
                     decimal += 100;
+                    break;
                 }
-            }
-            if (charArray[i] == 'L') {
-                decimal += 50;
-            }
-            if (charArray[i] == 'X') {
-                if (charArray[i + 1] == 'C') {
-                    decimal += 90;
-                    i++;
+                case 'L': {
+                    decimal += 50;
+                    break;
                 }
-                if (charArray[i + 1] == 'L') {
-                    decimal += 40;
-                    i++;
-                } else {
+                case 'X': {
+                    if (charArray[i + 1] == 'C') {
+                        decimal += 90;
+                        i++;
+                        break;
+                    }
+                    if (charArray[i + 1] == 'L') {
+                        decimal += 40;
+                        i++;
+                        break;
+                    }
                     decimal += 10;
+                    break;
                 }
-            }
-            if (charArray[i] == 'V') {
-                decimal += 5;
-            }
-            if (charArray[i] == 'I') {
-                if (charArray[i + 1] == 'X') {
-                    decimal += 9;
-                    i++;
+                case 'V': {
+                    decimal += 5;
+                    break;
                 }
-                if (charArray[i + 1] == 'V') {
-                    decimal += 4;
-                    i++;
-                } else {
+                case 'I': {
+                    if (charArray[i + 1] == 'X') {
+                        decimal += 9;
+                        i++;
+                        break;
+                    }
+                    if (charArray[i + 1] == 'V') {
+                        decimal += 4;
+                        i++;
+                        break;
+                    }
                     decimal += 1;
+                    break;
                 }
             }
         }
